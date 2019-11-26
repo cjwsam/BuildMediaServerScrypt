@@ -1,4 +1,5 @@
 #!/bin/bash
+# yeaaaaaa i did this enjoy :) 
 
 CWD=$(pwd)
 PACKAGES="$CWD/packages"
