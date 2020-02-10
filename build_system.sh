@@ -289,7 +289,7 @@ fi
 if build "Transmission"; then
 echo "installing Transmission-Daemon."
 
-execute apt install transmission-daemon
+execute apt install -y transmission-daemon
 execute service transmission-daemon stop
 execute rm /etc/transmission-daemon/settings.json
 execute curl -o /etc/transmission-daemon/settings.json https://raw.githubusercontent.com/cjwsam/BuildMediaServerScrypt/master/settings.json 
