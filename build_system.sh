@@ -251,40 +251,6 @@ echo " ";
 
 fi
 
-if build "Sonarr"; then
-
-echo "installing Sonarr."
-
-execute docker pull linuxserver/sonarr:$DOCKERTYPE 
-execute docker run --name Sonarr -d --restart=always -p 8989:8989 -v /nas:/nas linuxserver/sonarr
-
-echo "DONE, Intalling Sonarr YOU CAN ACCESS IT ON *IP* :8989."
-echo " ";
-
-fi
-if build "Radarr"; then
-
-echo "installing Radarr."
-
-execute docker pull linuxserver/radarr:$DOCKERTYPE 
-execute docker run --name radarr -d --restart=always -p 7878:7878 -v /nas:/nas linuxserver/radarr
-
-echo "DONE, Intalling Radarr YOU CAN ACCESS IT ON *IP* :7878."
-echo " ";
-
-fi
-
-if build "Tautulli"; then
-
-echo "installing Tautulli."
-
-execute docker pull linuxserver/tautulli:$DOCKERTYPE 
-execute docker run --name tautulli -d --restart=always -p 8181:8181 -v /nas:/nas linuxserver/tautulli
-
-echo "DONE, Intalling Tautulli YOU CAN ACCESS IT ON *IP* :8181."
-echo " ";
-
-fi
 
 if build "Transmission"; then
 echo "installing Transmission-Daemon."
@@ -304,9 +270,7 @@ fi
 if build "Monitorix"; then
 echo "installing Monitorix."
 
-execute wget https://www.monitorix.org/monitorix_3.11.0-izzy1_all.deb
- dpkg -i monitorix_3.11.0-izzy1_all.deb
-execute apt install -f -y 
+execute apt install monitorix -y
 execute service monitorix stop
 execute rm /etc/monitorix/monitorix.conf
 execute curl -o /etc/monitorix/monitorix.conf https://raw.githubusercontent.com/cjwsam/BuildMediaServerScrypt/master/monitorix.conf
